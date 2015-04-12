@@ -6,7 +6,8 @@ import javax.persistence.*;
 
 import java.util.Date;
 /**
- * Created by Cartoon on 2015/3/5.
+ * @author Cartoon
+ * on 2015/3/5.
  */
 @MappedSuperclass
 public abstract class DomainEntity implements LifeTimed {

@@ -7,11 +7,12 @@ import org.hibernate.CallbackException;
 import org.hibernate.EmptyInterceptor;
 import org.hibernate.type.Type;
 
-import so.glad.common.dao.EventTimed;
-import so.glad.common.dao.LifeTimed;
+import so.glad.storage.EventTimed;
+import so.glad.storage.LifeTimed;
 
 /**
- * Created by Cartoon on 2015/3/5.
+ * @author  Cartoon
+ * on 2015/3/5.
  */
 public class EntitySupportInterceptor extends EmptyInterceptor {
     public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState,

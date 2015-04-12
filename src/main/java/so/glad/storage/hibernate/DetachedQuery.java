@@ -10,7 +10,8 @@ import java.math.BigInteger;
 import java.util.*;
 
 /**
- * Created by Cartoon on 2015/3/4.
+ * @author Cartoon
+ * on 2015/3/4.
  */
 public interface DetachedQuery {
     Query getExecutableQuery(Session session);

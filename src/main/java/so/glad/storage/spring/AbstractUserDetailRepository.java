@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.Predicate;
 
 
 /**

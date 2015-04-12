@@ -6,7 +6,8 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
- * Created by Cartoon on 2015/3/5.
+ * @author  Cartoon
+ * on 2015/3/5.
  */
 @MappedSuperclass
 public abstract class StaticEntity implements Serializable, EventTimed {

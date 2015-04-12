@@ -3,7 +3,8 @@ package so.glad.storage;
 import java.util.List;
 
 /**
- * Created by Cartoon on 2015/3/4.
+ * @author  Cartoon
+ * on 2015/3/4.
  */
 public interface IDao<Po> {
 
