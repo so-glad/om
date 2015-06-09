@@ -6,7 +6,8 @@ import org.hibernate.criterion.DetachedCriteria;
 import java.util.List;
 
 /**
- * Created by Cartoon on 2015/3/4.
+ * @author by Cartoon
+ * on 2015/3/4.
  */
 public class BaseDao {
 

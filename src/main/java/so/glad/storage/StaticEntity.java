@@ -6,9 +6,11 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
- * @author  Cartoon
+ * @author Palmtale
  * on 2015/3/5.
+ * @deprecated Use some abstract implements. Such as AbstractStatic
  */
+@Deprecated
 @MappedSuperclass
 public abstract class StaticEntity implements Serializable, EventTimed {
     @Id

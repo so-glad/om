@@ -3,13 +3,13 @@ package so.glad.storage;
 import java.util.Date;
 
 /**
- * @author Cartoon
+ * @author Palmtale
  * on 2015/3/10.
  */
 public interface EventTimed {
 
-    public Date getTimestamp();
+    Date getTimestamp();
 
-    public void setTimestamp(Date timestamp);
+    void setTimestamp(Date timestamp);
 
 }

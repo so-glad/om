@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.Predicate;
 
-
 /**
  * @author palmtale
  *         on 2015/4/7.
