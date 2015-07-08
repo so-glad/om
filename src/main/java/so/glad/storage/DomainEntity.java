@@ -1,7 +1,11 @@
 package so.glad.storage;
 
 import com.google.common.base.Objects;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Date;
@@ -13,10 +17,12 @@ import java.util.Date;
 @MappedSuperclass
 public abstract class DomainEntity<ID extends Serializable> implements Domain<ID> {
 
+    @Id
+    @GeneratedValue
     private ID id;
-
+    @CreatedDate
     private Date createdDate;
-
+    @LastModifiedDate
     private Date lastModifiedDate;
 
     @Override

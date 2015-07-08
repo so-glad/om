@@ -2,6 +2,8 @@ package so.glad.storage;
 
 import com.google.common.base.Objects;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Date;
@@ -13,6 +15,8 @@ import java.util.Date;
 @MappedSuperclass
 public class StaticEntity <ID extends Serializable> implements Static<ID> {
 
+    @Id
+    @GeneratedValue
     private ID id;
 
     private Date timestamp;
