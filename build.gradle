@@ -4,7 +4,7 @@ apply plugin: 'maven-publish'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-version = '1.0.4'
+version = '1.0.5'
 
 repositories {
     maven {
@@ -27,10 +27,10 @@ dependencies {
     compile("org.apache.commons:commons-lang3:3.3.2")
     compile("org.slf4j:slf4j-api:1.7.12")
     compile("com.google.guava:guava:18.0")
-    compile("org.hibernate:hibernate-core:4.3.9.Final")
-    compile("org.hibernate:hibernate-entitymanager:4.3.9.Final")
-    compile("org.springframework.data:spring-data-jpa:1.8.0.RELEASE")
-    compile("org.springframework.security:spring-security-core:4.0.0.RELEASE")
+    compile("org.hibernate:hibernate-core:4.3.10.Final")
+    compile("org.hibernate:hibernate-entitymanager:4.3.10.Final")
+    compile("org.springframework.data:spring-data-jpa:1.8.1.RELEASE")
+    compile("org.springframework.security:spring-security-core:4.0.1.RELEASE")
     testCompile("org.slf4j:slf4j-log4j12:1.7.12")
     testCompile("log4j:log4j:1.2.17")
     testCompile("org.jmockit:jmockit:1.16")
