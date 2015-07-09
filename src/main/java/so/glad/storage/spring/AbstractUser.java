@@ -1,10 +1,14 @@
 package so.glad.storage.spring;
 
 import com.google.common.base.Objects;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import so.glad.storage.Domain;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Collection;
@@ -17,10 +21,12 @@ import java.util.Date;
 @MappedSuperclass
 public abstract class AbstractUser<ID extends Serializable> extends User implements Domain<ID> {
 
+    @Id
+    @GeneratedValue
     private ID id;
-
+    @CreatedDate
     private Date createdDate;
-
+    @LastModifiedDate
     private Date lastModifiedDate;
 
     public AbstractUser(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
