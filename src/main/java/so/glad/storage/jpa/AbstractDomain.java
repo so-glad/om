@@ -1,33 +1,29 @@
-package so.glad.storage;
+package so.glad.storage.jpa;
 
-import com.google.common.base.Objects;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+import so.glad.storage.Domain;
+import com.google.common.base.Objects;
 /**
- * @author palmtale
- *         on 15/7/8.
+ * @author Cartoon
+ *         on 2015/6/9.
  */
 @MappedSuperclass
-public abstract class DomainEntity<ID extends Serializable> implements Domain<ID> {
+public abstract class AbstractDomain<ID extends Serializable> implements Domain<ID> {
 
-    @Id
-    @GeneratedValue
     private ID id;
-    @CreatedDate
+
     private Date createdDate;
-    @LastModifiedDate
+
     private Date lastModifiedDate;
 
+    @Id
     @Override
-    public ID getId() {
-        return id;
+    @GeneratedValue
+    public ID getId(){
+        return this.id;
     }
 
     public void setId(ID id) {
@@ -35,6 +31,7 @@ public abstract class DomainEntity<ID extends Serializable> implements Domain<ID
     }
 
     @Override
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getCreatedDate() {
         return createdDate;
     }
@@ -45,6 +42,7 @@ public abstract class DomainEntity<ID extends Serializable> implements Domain<ID
     }
 
     @Override
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getLastModifiedDate() {
         return lastModifiedDate;
     }
@@ -59,10 +57,10 @@ public abstract class DomainEntity<ID extends Serializable> implements Domain<ID
         if (this == o) {
             return true;
         }
-        if (!(o instanceof DomainEntity)) {
+        if (!(o instanceof AbstractDomain)) {
             return false;
         }
-        DomainEntity<?> that = (DomainEntity<?>) o;
+        AbstractDomain<?> that = (AbstractDomain<?>) o;
         return Objects.equal(id, that.id) &&
                 Objects.equal(createdDate, that.createdDate) &&
                 Objects.equal(lastModifiedDate, that.lastModifiedDate);
