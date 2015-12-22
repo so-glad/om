@@ -7,18 +7,22 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.Predicate;
-
+import java.io.Serializable;
 
 /**
  * @author palmtale
  *         on 2015/4/7.
  */
-public abstract class AbstractUserDetailRepository<U extends UserDetails> extends SimpleJpaRepository<U, Long> implements UserDetailsService {
+public abstract class AbstractUserDetailRepository<U extends UserDetails, ID extends Serializable>
+        extends SimpleJpaRepository<U, ID> implements UserDetailsService {
+
     public AbstractUserDetailRepository(Class<U> userClass, EntityManager em) {
         super(userClass, em);
     }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return (UserDetails)this.findOne((root, criteriaQuery, criteriaBuilder) -> {
+        return this.findOne((root, criteriaQuery, criteriaBuilder) -> {
             String[] fieldsNames = this.fieldsNames();
             Predicate[] predicateArray = new Predicate[fieldsNames.length];
 

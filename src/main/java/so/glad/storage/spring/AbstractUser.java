@@ -3,6 +3,7 @@ package so.glad.storage.spring;
 import com.google.common.base.Objects;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.userdetails.UserDetails;
 import so.glad.storage.Domain;

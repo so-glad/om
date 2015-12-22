@@ -4,11 +4,11 @@ apply plugin: 'maven-publish'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-version = '1.0.2'
+version = '1.0.7'
 
 repositories {
     maven {
-        url "http://gear.glad.so:81/nexus/content/groups/public/"
+        url "http://gear.glad.so/nexus/content/groups/public/"
     }
 }
 
@@ -27,10 +27,10 @@ dependencies {
     compile("org.apache.commons:commons-lang3:3.3.2")
     compile("org.slf4j:slf4j-api:1.7.12")
     compile("com.google.guava:guava:18.0")
-    compile("org.hibernate:hibernate-core:4.3.9.Final")
-    compile("org.hibernate:hibernate-entitymanager:4.3.9.Final")
-    compile("org.springframework.data:spring-data-jpa:1.8.0.RELEASE")
-    compile("org.springframework.security:spring-security-core:4.0.0.RELEASE")
+    compile("org.hibernate:hibernate-core:4.3.10.Final")
+    compile("org.hibernate:hibernate-entitymanager:4.3.10.Final")
+    compile("org.springframework.data:spring-data-jpa:1.8.1.RELEASE")
+    compile("org.springframework.security:spring-security-core:4.0.1.RELEASE")
     testCompile("org.slf4j:slf4j-log4j12:1.7.12")
     testCompile("log4j:log4j:1.2.17")
     testCompile("org.jmockit:jmockit:1.16")
@@ -53,11 +53,11 @@ publishing {
 
     repositories {
         maven {
-            artifactUrls ["http://gear.glad.so:81/nexus/content/groups/public/"]
+            artifactUrls ["http://gear.glad.so/nexus/content/groups/public/"]
             if(project.version.endsWith('-SNAPSHOT')) {
-                url "http://gear.glad.so:81/nexus/content/repositories/snapshots/"
+                url "http://gear.glad.so/nexus/content/repositories/snapshots/"
             } else {
-                url "http://gear.glad.so:81/nexus/content/repositories/releases/"
+                url "http://gear.glad.so/nexus/content/repositories/releases/"
             }
             credentials {
                 username "${PUBLISH_USERNAME}"

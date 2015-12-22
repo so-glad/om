@@ -1,10 +1,12 @@
 package so.glad.storage;
 
+import java.io.Serializable;
+
 /**
- * @author palmtale
- *         on 15/5/14.
+ * @author Palmtale
+ * on 15/5/14.
  */
-public interface Domain<ID> extends LifeTimed {
+public interface Domain<ID extends Serializable> extends LifeTimed {
 
     ID getId();
 }
