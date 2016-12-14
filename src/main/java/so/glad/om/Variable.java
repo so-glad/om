@@ -1,12 +1,13 @@
-package so.glad.storage;
+package so.glad.om;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author Palmtale
- * on 2015/3/10.
+ * @author Cartoon Zhang
+ * @since 2016/12/14 下午10:42
  */
-public interface LifeTimed {
+public interface Variable<ID extends Serializable> extends Identifiable<ID> {
 
     Date getCreatedDate();
 

@@ -1,17 +1,18 @@
-package so.glad.storage.jpa;
+package so.glad.om.jpa;
+
+import com.google.common.base.Objects;
+import so.glad.om.Variable;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-import so.glad.storage.Domain;
-import com.google.common.base.Objects;
 /**
  * @author Cartoon
  *         on 2015/6/9.
  */
 @MappedSuperclass
-public abstract class AbstractDomain<ID extends Serializable> implements Domain<ID> {
+public abstract class AbstractDomain<ID extends Serializable> implements Variable<ID> {
 
     private ID id;
 

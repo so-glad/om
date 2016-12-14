@@ -1,4 +1,4 @@
-package so.glad.storage;
+package so.glad.om.spring;
 
 import com.google.common.collect.Lists;
 import org.springframework.data.repository.CrudRepository;

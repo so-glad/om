@@ -1,30 +1,35 @@
-package so.glad.storage.mongodb;
+package so.glad.om;
 
 import com.google.common.base.Objects;
-import org.springframework.data.annotation.Id;
-import so.glad.storage.Static;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author Cartoon
- *         on 2015/6/9.
+ *
+ *
+ * @author palmtale
+ *         on 15/7/8.
  */
-public class AbstractStatic<ID extends Serializable> implements Static<ID> {
+@MappedSuperclass
+public abstract class EstablishedFact<ID extends Serializable> implements Established<ID> {
 
+    @Id
+    @GeneratedValue
     private ID id;
 
     private Date timestamp;
 
-    @Id
+    public void setId(ID id) {
+        this.id = id;
+    }
+
     @Override
     public ID getId() {
         return id;
-    }
-
-    public void setId(ID id) {
-        this.id = id;
     }
 
     @Override
@@ -42,10 +47,10 @@ public class AbstractStatic<ID extends Serializable> implements Static<ID> {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof AbstractStatic)) {
+        if (!(o instanceof EstablishedFact)) {
             return false;
         }
-        AbstractStatic<?> that = (AbstractStatic<?>) o;
+        EstablishedFact<?> that = (EstablishedFact<?>) o;
         return Objects.equal(id, that.id) &&
                 Objects.equal(timestamp, that.timestamp);
     }

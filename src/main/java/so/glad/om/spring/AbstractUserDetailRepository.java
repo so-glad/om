@@ -1,4 +1,4 @@
-package so.glad.storage.spring;
+package so.glad.om.spring;
 
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;

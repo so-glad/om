@@ -1,4 +1,4 @@
-package so.glad.storage;
+package so.glad.om;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import java.util.List;
  * @author Palmtale
  * on 2015/3/4.
  */
-public interface IDao<Po> {
+public interface DataAccessible<Po> {
 
     void create(Po entity);
 

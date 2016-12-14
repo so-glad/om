@@ -1,6 +1,7 @@
-package so.glad.storage.hibernate;
+package so.glad.om.hibernate;
 
 import org.hibernate.*;
+import org.hibernate.query.Query;
 import org.hibernate.transform.ResultTransformer;
 import org.hibernate.type.Type;
 

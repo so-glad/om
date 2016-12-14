@@ -1,4 +1,4 @@
-package so.glad.storage;
+package so.glad.om;
 
 import com.google.common.base.Objects;
 import org.springframework.data.annotation.CreatedDate;
@@ -15,7 +15,7 @@ import java.util.Date;
  *         on 15/7/8.
  */
 @MappedSuperclass
-public abstract class DomainEntity<ID extends Serializable> implements Domain<ID> {
+public abstract class VariableObject<ID extends Serializable> implements Variable<ID> {
 
     @Id
     @GeneratedValue
@@ -59,10 +59,10 @@ public abstract class DomainEntity<ID extends Serializable> implements Domain<ID
         if (this == o) {
             return true;
         }
-        if (!(o instanceof DomainEntity)) {
+        if (!(o instanceof VariableObject)) {
             return false;
         }
-        DomainEntity<?> that = (DomainEntity<?>) o;
+        VariableObject<?> that = (VariableObject<?>) o;
         return Objects.equal(id, that.id) &&
                 Objects.equal(createdDate, that.createdDate) &&
                 Objects.equal(lastModifiedDate, that.lastModifiedDate);

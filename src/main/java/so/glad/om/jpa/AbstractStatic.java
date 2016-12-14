@@ -1,36 +1,36 @@
-package so.glad.storage;
+package so.glad.om.jpa;
 
 import com.google.common.base.Objects;
+import so.glad.om.Established;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author palmtale
- *         on 15/7/8.
+ * @author Cartoon
+ *         on 2015/6/9.
  */
 @MappedSuperclass
-public class StaticEntity <ID extends Serializable> implements Static<ID> {
+public abstract class AbstractStatic<ID extends Serializable> implements Established<ID> {
 
-    @Id
-    @GeneratedValue
     private ID id;
 
     private Date timestamp;
+
+    @Id
+    @Override
+    @GeneratedValue
+    public ID getId() {
+        return id;
+    }
 
     public void setId(ID id) {
         this.id = id;
     }
 
     @Override
-    public ID getId() {
-        return id;
-    }
-
-    @Override
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getTimestamp() {
         return timestamp;
     }
@@ -45,10 +45,10 @@ public class StaticEntity <ID extends Serializable> implements Static<ID> {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof StaticEntity)) {
+        if (!(o instanceof AbstractStatic)) {
             return false;
         }
-        StaticEntity<?> that = (StaticEntity<?>) o;
+        AbstractStatic<?> that = (AbstractStatic<?>) o;
         return Objects.equal(id, that.id) &&
                 Objects.equal(timestamp, that.timestamp);
     }

@@ -4,11 +4,11 @@ apply plugin: 'maven-publish'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-version = '1.0.7'
+version = '1.0.1-SNAPSHOT'
 
 repositories {
     maven {
-        url "http://gear.glad.so/nexus/content/groups/public/"
+        url "https://pub.glad.so/repository/maven-public/"
     }
 }
 
@@ -24,24 +24,24 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 
 dependencies {
     compile("org.apache.commons:commons-io:1.3.2")
-    compile("org.apache.commons:commons-lang3:3.3.2")
-    compile("org.slf4j:slf4j-api:1.7.12")
-    compile("com.google.guava:guava:18.0")
-    compile("org.hibernate:hibernate-core:4.3.10.Final")
-    compile("org.hibernate:hibernate-entitymanager:4.3.10.Final")
-    compile("org.springframework.data:spring-data-jpa:1.8.1.RELEASE")
-    compile("org.springframework.security:spring-security-core:4.0.1.RELEASE")
-    testCompile("org.slf4j:slf4j-log4j12:1.7.12")
+    compile("org.apache.commons:commons-lang3:3.5")
+    compile("org.slf4j:slf4j-api:1.7.21")
+    compile("com.google.guava:guava:20.0")
+    compile("org.hibernate:hibernate-core:5.2.5.Final")
+    compile("org.hibernate:hibernate-entitymanager:5.2.5.Final")
+    compile("org.springframework.data:spring-data-jpa:1.10.5.RELEASE")
+    compile("org.springframework.security:spring-security-core:4.2.0.RELEASE")
+    testCompile("org.slf4j:slf4j-log4j12:1.7.21")
     testCompile("log4j:log4j:1.2.17")
-    testCompile("org.jmockit:jmockit:1.16")
-    testCompile("junit:junit:4.11")
+    testCompile("org.jmockit:jmockit:1.29")
+    testCompile("junit:junit:4.12")
 }
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
             groupId = 'so.glad'
-            artifactId = 'soglad-storage'
+            artifactId = 'soglad-om'
 
             from components.java
             artifacts {
@@ -53,11 +53,11 @@ publishing {
 
     repositories {
         maven {
-            artifactUrls ["http://gear.glad.so/nexus/content/groups/public/"]
+            artifactUrls ["https://pub.glad.so/repository/maven-public/"]
             if(project.version.endsWith('-SNAPSHOT')) {
-                url "http://gear.glad.so/nexus/content/repositories/snapshots/"
+                url "https://pub.glad.so/repository/maven-snapshots/"
             } else {
-                url "http://gear.glad.so/nexus/content/repositories/releases/"
+                url "https://pub.glad.so/repository/maven-releases/"
             }
             credentials {
                 username "${PUBLISH_USERNAME}"

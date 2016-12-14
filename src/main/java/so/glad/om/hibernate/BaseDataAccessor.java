@@ -1,6 +1,7 @@
-package so.glad.storage.hibernate;
+package so.glad.om.hibernate;
 
 import org.hibernate.*;
+import org.hibernate.query.Query;
 import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * @author by Cartoon
  * on 2015/3/4.
  */
-public class BaseDao {
+public class BaseDataAccessor {
 
     private SessionFactory sessionFactory;
 

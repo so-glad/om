@@ -1,7 +1,7 @@
-package so.glad.storage.hibernate;
+package so.glad.om.hibernate;
 
 import org.hibernate.criterion.DetachedCriteria;
-import so.glad.storage.IDao;
+import so.glad.om.DataAccessible;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  * @author Cartoon
  * on 2015/3/4.
  */
-public class BaseDaoSupport<Po> extends BaseDao implements IDao<Po> {
+public class BaseDaoSupport<Po> extends BaseDataAccessor implements DataAccessible<Po> {
 
     public DetachedCriteria createDetachedCriteria() {
         return DetachedCriteria.forClass(getEntityClass());

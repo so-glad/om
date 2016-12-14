@@ -1,4 +1,4 @@
-package so.glad.storage.spring;
+package so.glad.om.spring;
 
 import com.google.common.base.Objects;
 import org.springframework.data.annotation.CreatedDate;
@@ -6,7 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.userdetails.UserDetails;
-import so.glad.storage.Domain;
+import so.glad.om.Variable;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,7 +20,7 @@ import java.util.Date;
  */
 
 @MappedSuperclass
-public abstract class AbstractUser<ID extends Serializable> implements UserDetails, CredentialsContainer, Domain<ID> {
+public abstract class AbstractUser<ID extends Serializable> implements UserDetails, CredentialsContainer, Variable<ID> {
 
     @Id
     @GeneratedValue

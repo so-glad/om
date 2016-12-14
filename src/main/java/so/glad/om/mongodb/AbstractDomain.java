@@ -1,9 +1,9 @@
-package so.glad.storage.mongodb;
+package so.glad.om.mongodb;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
-import so.glad.storage.Domain;
+import so.glad.om.Variable;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Cartoon
  *         on 2015/6/9.
  */
-public class AbstractDomain<ID extends Serializable> implements Domain<ID> {
+public class AbstractDomain<ID extends Serializable> implements Variable<ID> {
 
     private ID id;
 

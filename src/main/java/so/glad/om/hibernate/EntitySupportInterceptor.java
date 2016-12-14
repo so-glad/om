@@ -1,42 +1,41 @@
-package so.glad.storage.hibernate;
-
-import java.io.Serializable;
-import java.util.Date;
+package so.glad.om.hibernate;
 
 import org.hibernate.CallbackException;
 import org.hibernate.EmptyInterceptor;
 import org.hibernate.type.Type;
+import so.glad.om.Established;
+import so.glad.om.Variable;
 
-import so.glad.storage.EventTimed;
-import so.glad.storage.LifeTimed;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author  Cartoon
- * on 2015/3/5.
+ * @since 2015/3/5.
  */
 public class EntitySupportInterceptor extends EmptyInterceptor {
     public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState,
                                 String[] propertyNames, Type[] types) throws CallbackException {
-        if (entity instanceof LifeTimed) {
-            LifeTimed lifeTimedEntity = (LifeTimed) entity;
+        if (entity instanceof Variable) {
+            Variable variable = (Variable) entity;
             boolean modified = false;
             for (int i = 0; i < propertyNames.length; i++) {
                 if ("lastModifiedDate".equals(propertyNames[i])) {
                     Date lastModifyDate = new Date();
                     currentState[i] = lastModifyDate;
-                    lifeTimedEntity.setLastModifiedDate(lastModifyDate);
+                    variable.setLastModifiedDate(lastModifyDate);
                     modified = true;
                 }
             }
             return modified;
-        } else if (entity instanceof EventTimed) {
-            EventTimed eventTimedEntity = (EventTimed) entity;
+        } else if (entity instanceof Established) {
+            Established established = (Established) entity;
             boolean modified = false;
             for (int i = 0; i < propertyNames.length; i++) {
                 if ("timestamp".equals(propertyNames[i])) {
                     Date timestamp = new Date();
                     currentState[i] = timestamp;
-                    eventTimedEntity.setTimestamp(timestamp);
+                    established.setTimestamp(timestamp);
                     modified = true;
                 }
             }
@@ -47,31 +46,31 @@ public class EntitySupportInterceptor extends EmptyInterceptor {
 
     public boolean onSave(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types)
             throws CallbackException {
-        if (entity instanceof LifeTimed) {
-            LifeTimed lifeTimedEntity = (LifeTimed) entity;
+        if (entity instanceof Variable) {
+            Variable VariableEntity = (Variable) entity;
             boolean modified = false;
             for (int i = 0; i < propertyNames.length; i++) {
                 if ("createdDate".equals(propertyNames[i])) {
                     Date createDate = new Date();
                     state[i] = createDate;
-                    lifeTimedEntity.setCreatedDate(createDate);
+                    VariableEntity.setCreatedDate(createDate);
                     modified = true;
                 } else if ("lastModifiedDate".equals(propertyNames[i])) {
                     Date lastModifyDate = new Date();
                     state[i] = lastModifyDate;
-                    lifeTimedEntity.setLastModifiedDate(lastModifyDate);
+                    VariableEntity.setLastModifiedDate(lastModifyDate);
                     modified = true;
                 }
             }
             return modified;
-        }  else if (entity instanceof EventTimed) {
-            EventTimed eventTimedEntity = (EventTimed) entity;
+        }  else if (entity instanceof Established) {
+            Established established = (Established) entity;
             boolean modified = false;
             for (int i = 0; i < propertyNames.length; i++) {
                 if ("timestamp".equals(propertyNames[i])) {
                     Date timestamp = new Date();
                     state[i] = timestamp;
-                    eventTimedEntity.setTimestamp(timestamp);
+                    established.setTimestamp(timestamp);
                     modified = true;
                 }
             }

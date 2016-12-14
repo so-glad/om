@@ -1,7 +1,7 @@
-package so.glad.storage.hibernate;
+package so.glad.om.hibernate;
 
 import org.hibernate.HibernateException;
-import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
 
 import java.io.Serializable;
@@ -13,7 +13,8 @@ import java.sql.SQLException;
  * @author palmtale
  *         on 15/7/21.
  */
-public class MapStringUserType implements UserType{
+public class MapStringUserType implements UserType {
+
     @Override
     public int[] sqlTypes() {
         return new int[0];
@@ -35,12 +36,12 @@ public class MapStringUserType implements UserType{
     }
 
     @Override
-    public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner) throws HibernateException, SQLException {
+    public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
         return null;
     }
 
     @Override
-    public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor session) throws HibernateException, SQLException {
+    public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
 
     }
 

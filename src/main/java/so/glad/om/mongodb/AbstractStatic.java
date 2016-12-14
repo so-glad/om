@@ -1,9 +1,9 @@
-package so.glad.storage.jpa;
+package so.glad.om.mongodb;
 
 import com.google.common.base.Objects;
-import so.glad.storage.Static;
+import org.springframework.data.annotation.Id;
+import so.glad.om.Established;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,8 +11,7 @@ import java.util.Date;
  * @author Cartoon
  *         on 2015/6/9.
  */
-@MappedSuperclass
-public abstract class AbstractStatic<ID extends Serializable> implements Static<ID> {
+public class AbstractStatic<ID extends Serializable> implements Established<ID> {
 
     private ID id;
 
@@ -20,7 +19,6 @@ public abstract class AbstractStatic<ID extends Serializable> implements Static<
 
     @Id
     @Override
-    @GeneratedValue
     public ID getId() {
         return id;
     }
@@ -30,7 +28,6 @@ public abstract class AbstractStatic<ID extends Serializable> implements Static<
     }
 
     @Override
-    @Temporal(TemporalType.TIMESTAMP)
     public Date getTimestamp() {
         return timestamp;
     }
