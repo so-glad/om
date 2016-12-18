@@ -2,9 +2,7 @@ package so.glad.om;
 
 import com.google.common.base.Objects;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,9 +16,10 @@ import java.util.Date;
 public abstract class EstablishedFact<ID extends Serializable> implements Established<ID> {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private ID id;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
 
     public void setId(ID id) {
@@ -37,7 +36,6 @@ public abstract class EstablishedFact<ID extends Serializable> implements Establ
         return timestamp;
     }
 
-    @Override
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }

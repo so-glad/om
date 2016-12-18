@@ -9,14 +9,8 @@ import java.util.Date;
  */
 public interface Variable<ID extends Serializable> extends Identifiable<ID> {
 
-    Date getCreatedDate();
+    Date getCreatedAt();
 
+    Date getUpdatedAt();
 
-    void setCreatedDate(Date createdDate);
-
-
-    Date getLastModifiedDate() ;
-
-
-    void setLastModifiedDate(Date lastModifiedDate);
 }

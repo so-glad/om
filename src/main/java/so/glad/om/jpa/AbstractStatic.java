@@ -35,7 +35,6 @@ public abstract class AbstractStatic<ID extends Serializable> implements Establi
         return timestamp;
     }
 
-    @Override
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }

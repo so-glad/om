@@ -107,21 +107,19 @@ public abstract class AbstractUser<ID extends Serializable> implements UserDetai
     }
 
     @Override
-    public Date getCreatedDate() {
+    public Date getCreatedAt() {
         return createdDate;
     }
 
-    @Override
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
     @Override
-    public Date getLastModifiedDate() {
+    public Date getUpdatedAt() {
         return lastModifiedDate;
     }
 
-    @Override
     public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }

@@ -32,7 +32,6 @@ public class AbstractStatic<ID extends Serializable> implements Established<ID> 
         return timestamp;
     }
 
-    @Override
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }

@@ -1,8 +1,6 @@
 package so.glad.om.mongodb;
 
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.LastModifiedDate;
 import so.glad.om.Variable;
 
 import java.io.Serializable;
@@ -31,23 +29,19 @@ public class AbstractDomain<ID extends Serializable> implements Variable<ID> {
     }
 
     @Override
-    @CreatedDate
-    public Date getCreatedDate() {
+    public Date getCreatedAt() {
         return createdDate;
     }
 
-    @Override
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
     @Override
-    @LastModifiedDate
-    public Date getLastModifiedDate() {
+    public Date getUpdatedAt() {
         return lastModifiedDate;
     }
 
-    @Override
     public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }

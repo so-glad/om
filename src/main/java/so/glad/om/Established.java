@@ -14,6 +14,4 @@ public interface Established<ID extends Serializable> extends Identifiable<ID> {
 
     Date getTimestamp();
 
-    void setTimestamp(Date timestamp);
-
 }

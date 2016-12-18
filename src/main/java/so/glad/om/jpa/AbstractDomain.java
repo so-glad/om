@@ -33,22 +33,20 @@ public abstract class AbstractDomain<ID extends Serializable> implements Variabl
 
     @Override
     @Temporal(TemporalType.TIMESTAMP)
-    public Date getCreatedDate() {
+    public Date getCreatedAt() {
         return createdDate;
     }
 
-    @Override
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
     @Override
     @Temporal(TemporalType.TIMESTAMP)
-    public Date getLastModifiedDate() {
+    public Date getUpdatedAt() {
         return lastModifiedDate;
     }
 
-    @Override
     public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }

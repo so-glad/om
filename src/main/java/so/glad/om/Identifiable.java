@@ -10,5 +10,7 @@ import java.io.Serializable;
  * @since 2016/12/14 下午10:36
  */
 public interface Identifiable<ID extends Serializable> {
+
     ID getId();
+
 }

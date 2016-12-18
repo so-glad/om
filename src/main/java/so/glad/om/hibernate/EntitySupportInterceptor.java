@@ -3,8 +3,9 @@ package so.glad.om.hibernate;
 import org.hibernate.CallbackException;
 import org.hibernate.EmptyInterceptor;
 import org.hibernate.type.Type;
-import so.glad.om.Established;
+import so.glad.om.EstablishedFact;
 import so.glad.om.Variable;
+import so.glad.om.VariableObject;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,30 +17,20 @@ import java.util.Date;
 public class EntitySupportInterceptor extends EmptyInterceptor {
     public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState,
                                 String[] propertyNames, Type[] types) throws CallbackException {
-        if (entity instanceof Variable) {
-            Variable variable = (Variable) entity;
+        if (entity instanceof VariableObject) {
+            VariableObject variable = (VariableObject) entity;
             boolean modified = false;
             for (int i = 0; i < propertyNames.length; i++) {
-                if ("lastModifiedDate".equals(propertyNames[i])) {
+                if ("updatedAt".equals(propertyNames[i])) {
                     Date lastModifyDate = new Date();
                     currentState[i] = lastModifyDate;
-                    variable.setLastModifiedDate(lastModifyDate);
+                    variable.setUpdatedAt(lastModifyDate);
                     modified = true;
                 }
             }
             return modified;
-        } else if (entity instanceof Established) {
-            Established established = (Established) entity;
-            boolean modified = false;
-            for (int i = 0; i < propertyNames.length; i++) {
-                if ("timestamp".equals(propertyNames[i])) {
-                    Date timestamp = new Date();
-                    currentState[i] = timestamp;
-                    established.setTimestamp(timestamp);
-                    modified = true;
-                }
-            }
-            return modified;
+        } else if (entity instanceof EstablishedFact) {
+            throw new RuntimeException("Established fact cannot be updated.");
         }
         return false;
     }
@@ -47,24 +38,24 @@ public class EntitySupportInterceptor extends EmptyInterceptor {
     public boolean onSave(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types)
             throws CallbackException {
         if (entity instanceof Variable) {
-            Variable VariableEntity = (Variable) entity;
+            VariableObject VariableEntity = (VariableObject) entity;
             boolean modified = false;
             for (int i = 0; i < propertyNames.length; i++) {
-                if ("createdDate".equals(propertyNames[i])) {
+                if ("createdAt".equals(propertyNames[i])) {
                     Date createDate = new Date();
                     state[i] = createDate;
-                    VariableEntity.setCreatedDate(createDate);
+                    VariableEntity.setCreatedAt(createDate);
                     modified = true;
-                } else if ("lastModifiedDate".equals(propertyNames[i])) {
+                } else if ("updatedAt".equals(propertyNames[i])) {
                     Date lastModifyDate = new Date();
                     state[i] = lastModifyDate;
-                    VariableEntity.setLastModifiedDate(lastModifyDate);
+                    VariableEntity.setUpdatedAt(lastModifyDate);
                     modified = true;
                 }
             }
             return modified;
-        }  else if (entity instanceof Established) {
-            Established established = (Established) entity;
+        }  else if (entity instanceof EstablishedFact) {
+            EstablishedFact established = (EstablishedFact) entity;
             boolean modified = false;
             for (int i = 0; i < propertyNames.length; i++) {
                 if ("timestamp".equals(propertyNames[i])) {

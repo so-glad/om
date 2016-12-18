@@ -1,12 +1,8 @@
 package so.glad.om;
 
 import com.google.common.base.Objects;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,12 +14,14 @@ import java.util.Date;
 public abstract class VariableObject<ID extends Serializable> implements Variable<ID> {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private ID id;
-    @CreatedDate
-    private Date createdDate;
-    @LastModifiedDate
-    private Date lastModifiedDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
 
     @Override
     public ID getId() {
@@ -33,43 +31,36 @@ public abstract class VariableObject<ID extends Serializable> implements Variabl
     public void setId(ID id) {
         this.id = id;
     }
-
     @Override
-    public Date getCreatedDate() {
-        return createdDate;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
     @Override
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    @Override
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    @Override
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof VariableObject)) {
-            return false;
-        }
+        if (this == o) return true;
+        if (!(o instanceof VariableObject)) return false;
         VariableObject<?> that = (VariableObject<?>) o;
         return Objects.equal(id, that.id) &&
-                Objects.equal(createdDate, that.createdDate) &&
-                Objects.equal(lastModifiedDate, that.lastModifiedDate);
+                Objects.equal(createdAt, that.createdAt) &&
+                Objects.equal(updatedAt, that.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, createdDate, lastModifiedDate);
+        return Objects.hashCode(id, createdAt, updatedAt);
     }
+
 }
